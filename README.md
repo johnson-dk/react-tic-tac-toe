@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f2ad1811-8405-4bed-bc5f-ee3ac281b8fb/deploy-status)](https://app.netlify.com/sites/react-tic-tac-toe-tutorial/deploys)
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
