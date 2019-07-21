@@ -21,6 +21,22 @@ function calculateWinner(squares) {
   return null;
 }
 
+function getMoveLocation(move) {
+  const boardMap = {
+    0: 'row: 1, col: 1',
+    1: 'row: 1, col: 2',
+    2: 'row: 1, col: 3',
+    3: 'row: 2, col: 1',
+    4: 'row: 2, col: 2',
+    5: 'row: 2, col: 3',
+    6: 'row: 3, col: 1',
+    7: 'row: 3, col: 2',
+    8: 'row: 3, col: 3',
+  };
+
+  return boardMap[move];
+}
+
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -45,7 +61,8 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([
         {
-          squares: squares
+          squares: squares,
+          moveLocation: getMoveLocation(i)
         }
       ]),
       stepNumber: history.length,
@@ -64,10 +81,11 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
+      const currentLocation = step.moveLocation ? `(${step.moveLocation})` : '';
       const desc = move ? "Go to move #" + move : "Go to start of game";
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(move)}>{desc} {currentLocation}</button>
         </li>
       );
     });
